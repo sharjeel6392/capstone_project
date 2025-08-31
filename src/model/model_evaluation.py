@@ -27,8 +27,8 @@ import os
 
 # Dagshub/MLflow for local
 # ============================================================================
-mlflow.set_registry_uri('https://dagshub.com/owner/repo.mlflow')
-dagshub.init(repo_owner='owner', repo_name='repo', mlflow=True)
+mlflow.set_registry_uri('https://dagshub.com/Owner/Repo.mlflow')
+dagshub.init(repo_owner='Owner', repo_name='Repo', mlflow=True)
 
 def load_model(file_path: str):
     try:
