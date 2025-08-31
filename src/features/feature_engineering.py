@@ -35,7 +35,7 @@ def load_data(file_path: str) -> pd.DataFrame:
         logging.error(f'Unexpected error occured while loading data for feature engineering: {e}')
         raise
 
-def apply_bow(train_data: pd.DataFrame, test_data: pd.DataFrame, max_features = int) -> tuple:
+def apply_bow(train_data: pd.DataFrame, test_data: pd.DataFrame, max_features: int) -> tuple:
     try:
         logging.info(f'Applying Bag of Words (BoW)')
         vectorizer = CountVectorizer(max_features= max_features)
@@ -81,8 +81,8 @@ def main():
         test_data = load_data('./data/interim/test_processed.csv')
 
         train_df, test_df = apply_bow(train_data, test_data, max_features)
-        save_data(train_df, os.path.join('./data', 'processed', 'train_bow.py'))
-        save_data(test_df, os.path.join('./data', 'processed', 'test_bow.py'))
+        save_data(train_df, os.path.join('./data', 'processed', 'train_bow.csv'))
+        save_data(test_df, os.path.join('./data', 'processed', 'test_bow.csv'))
 
 
     except Exception as e:
