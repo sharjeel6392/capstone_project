@@ -4,7 +4,7 @@ import numpy as np
 from src.logger import logging
 from sklearn.linear_model import LogisticRegression
 import pickle
-import constants
+from src.constants import MODEL_DIR, MODEL_FILE
 
 def load_data(file_path: str) -> pd.DataFrame:
     try:
@@ -44,8 +44,8 @@ def main():
         y_train = np.array(train_data.iloc[:, -1])
 
         clf = train_model(X_train, y_train)
-        os.makedirs(constants.MODEL_DIR, exist_ok=True)
-        model_file_path = os.path.join(constants.MODEL_DIR, constants.MODEL_FILE)
+        os.makedirs(MODEL_DIR, exist_ok=True)
+        model_file_path = os.path.join(MODEL_DIR, MODEL_FILE)
 
         model_path = os.path.join('./models', model_file_path)
         os.makedirs(model_path, exist_ok= True)

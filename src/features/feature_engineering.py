@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 import yaml
 from src.logger import logging
 import pickle
-import constants
+from src.constants import MODEL_DIR, VECTORIZER_FILE
 
 def load_params(params_path: str) -> dict:
     try:
@@ -55,8 +55,8 @@ def apply_bow(train_data: pd.DataFrame, test_data: pd.DataFrame, max_features: i
         test_df = pd.DataFrame(X_test_bow.toarray())
         test_df['label'] = y_test
 
-        os.makedirs(constants.MODEL_DIR, exist_ok=True)
-        vectorizer_file_path = os.path.join(constants.MODEL_DIR, constants.VECTORIZER_FILE)
+        os.makedirs(MODEL_DIR, exist_ok=True)
+        vectorizer_file_path = os.path.join(MODEL_DIR, VECTORIZER_FILE)
 
         pickle.dump(vectorizer, open(vectorizer_file_path, 'wb'))
         logging.info('Bag of words applied and data transformed!')
