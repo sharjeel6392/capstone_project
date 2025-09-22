@@ -8,6 +8,7 @@ import mlflow
 import mlflow.sklearn
 import dagshub
 import os
+import mlflow_creds
 
 
 # Dagshub/MLflow for production
@@ -27,8 +28,8 @@ import os
 
 # Dagshub/MLflow for local
 # ============================================================================
-mlflow.set_registry_uri('https://dagshub.com/Owner/Repo.mlflow')
-dagshub.init(repo_owner='Owner', repo_name='Repo', mlflow=True)
+mlflow.set_registry_uri(mlflow_creds.MLFLOW_TRACKING_URI)
+dagshub.init(repo_owner=mlflow_creds.REPO_OWNER, repo_name=mlflow_creds.REPO_NAME, mlflow=True)
 
 def load_model(file_path: str):
     try:
