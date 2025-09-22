@@ -12,23 +12,23 @@ import os
 
 # Dagshub/MLflow for production
 # ===========================================================================
-# dagshub_token = os.getenv("CAPSTONE_TEST")
-# if not dagshub_token:
-#     raise EnvironmentError(f'CAPSTONE_TEST environment variable not set')
+dagshub_token = os.getenv("CAPSTONE_TEST")
+if not dagshub_token:
+    raise EnvironmentError(f'CAPSTONE_TEST environment variable not set')
 
-# os.environ['MLFLOW_TRACKING_USERNAME'] = dagshub_token
-# os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
+os.environ['MLFLOW_TRACKING_USERNAME'] = dagshub_token
+os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
 
-# dagshub_uri = "https://dagshub.com"
-# repo_owner = "owner"
-# repo_name = "repo"
+dagshub_uri = "https://dagshub.com"
+repo_owner = "kirksalvator6392"
+repo_name = "capstone_project"
 
-# mlflow.set_tracking_uri(f'{dagshub_uri}/{repo_owner}/{repo_name}.mlflow')
+mlflow.set_tracking_uri(f'{dagshub_uri}/{repo_owner}/{repo_name}.mlflow')
 
 # Dagshub/MLflow for local
 # ============================================================================
-mlflow.set_registry_uri('https://dagshub.com/kirksalvator6392/capstone_project.mlflow')
-dagshub.init(repo_owner='kirksalvator6392', repo_name='capstone_project', mlflow=True)
+# mlflow.set_registry_uri('https://dagshub.com/kirksalvator6392/capstone_project.mlflow')
+# dagshub.init(repo_owner='kirksalvator6392', repo_name='capstone_project', mlflow=True)
 
 def load_model(file_path: str):
     try:

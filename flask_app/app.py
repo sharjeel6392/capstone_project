@@ -11,8 +11,6 @@ from nltk.corpus import stopwords
 import string
 import re
 import dagshub
-from mlflow_creds import MLFLOW_TRACKING_URI, REPO_NAME, REPO_OWNER
-
 
 import warnings
 warnings.simplefilter('ignore', UserWarning)
@@ -65,24 +63,24 @@ def normalize_text(text):
 
 # For local use
 # ================================================================================================
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
-dagshub.init(repo_owner= REPO_OWNER, repo_name=REPO_NAME, mlflow= True)
+# mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+# dagshub.init(repo_owner= REPO_OWNER, repo_name=REPO_NAME, mlflow= True)
 
 # For Production use
 # ================================================================================================
-## Set up Dagshub credentials for MLflow tracking
-# dagshub_token = os.getenv("CAPSTONE_TEST")
-# if not dagshub_token:
-#     raise EnvironmentError('CAPSTONE_TEST environment variable not set')
+# Set up Dagshub credentials for MLflow tracking
+dagshub_token = os.getenv("CAPSTONE_TEST")
+if not dagshub_token:
+    raise EnvironmentError('CAPSTONE_TEST environment variable not set')
 
-# os.environ['MLFLOW_TRACKING_USERNAME'] = dagshub_token
-# os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
+os.environ['MLFLOW_TRACKING_USERNAME'] = dagshub_token
+os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
 
-# dagshub_url = 'https://dagshub.com'
-# repo_owner = REPO_OWNER
-# repo_name = REPO_NAME
+dagshub_url = 'https://dagshub.com'
+repo_owner = 'kirksalvator6392'
+repo_name = 'capstone_project'
 
-# mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 # -------------------------------------------------------------------------------------------------
 
 app = Flask(__name__)
