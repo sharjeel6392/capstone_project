@@ -47,10 +47,7 @@ def main():
         os.makedirs(MODEL_DIR, exist_ok=True)
         model_file_path = os.path.join(MODEL_DIR, MODEL_FILE)
 
-        model_path = os.path.join('./models', model_file_path)
-        os.makedirs(model_path, exist_ok= True)
-
-        save_model(clf, model_path)
+        save_model(clf, model_file_path)
     except Exception as e:
         logging.error(f'Failed to complete the model building process: {e}')
     
