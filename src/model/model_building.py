@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 from src.logger import logging
@@ -42,7 +43,10 @@ def main():
         y_train = np.array(train_data.iloc[:, -1])
 
         clf = train_model(X_train, y_train)
-        save_model(clf, 'models/model.pkl')
+        model_path = os.path.join('./models', 'model.pkl')
+        os.makedirs(model_path, exist_ok= True)
+
+        save_model(clf, model_path)
     except Exception as e:
         logging.error(f'Failed to complete the model building process: {e}')
     
