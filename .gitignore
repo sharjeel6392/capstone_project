@@ -208,7 +208,3 @@ __marimo__/
 credentials.txt
 notebooks/
 local_s3/
-/data
-/models
-/reports
-mlflow_creds.py
