@@ -8,7 +8,6 @@ import mlflow
 import mlflow.sklearn
 import dagshub
 import os
-import mlflow_creds
 
 
 # Dagshub/MLflow for production
@@ -28,8 +27,8 @@ import mlflow_creds
 
 # Dagshub/MLflow for local
 # ============================================================================
-mlflow.set_registry_uri(mlflow_creds.MLFLOW_TRACKING_URI)
-dagshub.init(repo_owner=mlflow_creds.REPO_OWNER, repo_name=mlflow_creds.REPO_NAME, mlflow=True)
+mlflow.set_registry_uri('https://dagshub.com/kirksalvator6392/capstone_project.mlflow')
+dagshub.init(repo_owner='kirksalvator6392', repo_name='capstone_project', mlflow=True)
 
 def load_model(file_path: str):
     try:

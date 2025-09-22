@@ -3,7 +3,6 @@ import mlflow
 from src.logger import logging
 import os
 import dagshub
-import mlflow_creds
 
 import warnings
 warnings.simplefilter('ignore', UserWarning)
@@ -26,8 +25,8 @@ warnings.filterwarnings('ignore')
 
 # For local:
 # =======================================================================================
-mlflow.set_tracking_uri(mlflow_creds.MLFLOW_TRACKING_URI)
-dagshub.init(repo_owner=mlflow_creds.REPO_OWNER, repo_name=mlflow_creds.REPO_NAME, mlflow=True)
+mlflow.set_tracking_uri('https://dagshub.com/kirksalvator6392/capstone_project.mlflow')
+dagshub.init(repo_owner='kirksalvator6392', repo_name='capstone_project', mlflow=True)
 
 def load_model_info(file_path: str) -> dict:
     try:
